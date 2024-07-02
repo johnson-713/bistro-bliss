@@ -1,4 +1,5 @@
 import { About } from "../components/About";
+import { Footer } from "../components/Footer";
 import { Home } from "../components/Home";
 import { Navbar } from "../components/Navbar";
 import "./App.css";
@@ -15,6 +16,7 @@ function App() {
         <Route path="/contact" element="" />
         <Route path="/menu" element="" />
       </Routes>   
+      <Footer />
     </Router>
   );
 }
