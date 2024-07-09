@@ -16,7 +16,7 @@ export const Footer = () => {
         },
     ]
   return (
-    <div className="bg-[#474747] px-[150px] py-[120px] flex gap-[300px] text-[#fff]">
+    <div className="bg-[#474747] px-[150px] py-[120px] flex gap-[80px] text-[#fff]">
         <div className="flex flex-col gap-[30px] max-w-[290px]">
             <img src='/icons/logo-white.svg' alt='logo' />
             <p>In the new era of technology we look a in the future with certainty and pride to for our company and.</p>

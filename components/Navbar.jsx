@@ -1,4 +1,10 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 export const Navbar = () => {
+  const [active, setActive] = useState('home')
+  const navigate = useNavigate()
+  console.log('active button', active)
   return (
     <div className="">
       <div className="bg-[#474747] px-[150px] py-[10px] flex justify-between text-[#fff]">
@@ -25,11 +31,11 @@ export const Navbar = () => {
         </div>
         <div className="flex gap-[180px]">
           <div className="flex gap-[24px]">
-            <p>Home</p>
-            <p>About</p>
-            <p>Menu</p>
-            <p>Contact</p>
-            <p>Blogs</p>
+            <p className={`${active == 'home' ? 'text-[#AD343E] font-bold' : ''}`} onClick={() => setActive('home')}>Home</p>
+            <p className={`${active == 'about' ? 'text-[#AD343E] font-bold' : ''}`} onClick={() => setActive('about')}>About</p>
+            <p className={`${active == 'menu' ? 'text-[#AD343E] font-bold' : ''}`} onClick={() => setActive('menu')}>Menu</p>
+            <p className={`${active == 'contact' ? 'text-[#AD343E] font-bold' : ''}`} onClick={() => setActive('contact')}>Contact</p>
+            <p className={`${active == 'blogs' ? 'text-[#AD343E] font-bold' : ''}`} onClick={() => setActive('blogs')}>Blogs</p>
           </div>
           <button className="border border-[#000] px-[14px] py-[4px] rounded-2xl">Book a Table</button>
         </div>
