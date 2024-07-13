@@ -1,4 +1,5 @@
 import { About } from "../components/About";
+import { BookATable } from "../components/BookATable";
 import { Footer } from "../components/Footer";
 import { Home } from "../components/Home";
 import { Menu } from "../components/Menu";
@@ -14,8 +15,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/blog" element="" />
         <Route path="/about" element={<About />} />
-        <Route path="/contact" element="" />
+        <Route path="/contact" element={<BookATable />} />
         <Route path="/menu" element={<Menu />} />
+        <Route path="/book-table" element={<BookATable />} />
       </Routes>   
       <Footer />
     </Router>

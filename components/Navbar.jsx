@@ -1,10 +1,39 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { act, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+
+const navbarData = [
+  {
+    title: "Home",
+    link: "/",
+  },
+  {
+    title: "About",
+    link: "/about",
+  },
+  {
+    title: "Menu",
+    link: "/menu",
+  },
+  {
+    title: "Blog",
+    link: "/blog",
+  },
+  {
+    title: "Contact",
+    link: "/contact",
+  },
+];
 
 export const Navbar = () => {
-  const [active, setActive] = useState('home')
-  const navigate = useNavigate()
-  console.log('active button', active)
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  console.log("location", location.pathname);
+
+  const handleClick = (link) => {
+    navigate(link);
+  };
+
   return (
     <div className="">
       <div className="bg-[#474747] px-[150px] py-[10px] flex justify-between text-[#fff]">
@@ -31,13 +60,23 @@ export const Navbar = () => {
         </div>
         <div className="flex gap-[180px]">
           <div className="flex gap-[24px]">
-            <p className={`${active == 'home' ? 'text-[#AD343E] font-bold' : ''}`} onClick={() => setActive('home')}>Home</p>
-            <p className={`${active == 'about' ? 'text-[#AD343E] font-bold' : ''}`} onClick={() => setActive('about')}>About</p>
-            <p className={`${active == 'menu' ? 'text-[#AD343E] font-bold' : ''}`} onClick={() => setActive('menu')}>Menu</p>
-            <p className={`${active == 'contact' ? 'text-[#AD343E] font-bold' : ''}`} onClick={() => setActive('contact')}>Contact</p>
-            <p className={`${active == 'blogs' ? 'text-[#AD343E] font-bold' : ''}`} onClick={() => setActive('blogs')}>Blogs</p>
+            {navbarData?.map((i, ind) => (
+              <p
+                key={ind}
+                className={`${
+                  location.pathname == i?.link ? "text-[#AD343E] font-bold" : ""
+                } cursor-pointer`}
+                onClick={() => handleClick(i?.link)}
+              >
+                {i.title}
+              </p>
+            ))}
           </div>
-          <button className="border border-[#000] px-[14px] py-[4px] rounded-2xl">Book a Table</button>
+          <button onClick={() => navigate("/book-table")} className={`border border-[#000] px-[14px] py-[4px] rounded-2xl ${
+                  location.pathname == '/book-table' ? "bg-[#AD343E] font-bold border-none text-[#fff]" : ""
+                }`}>
+            Book a Table
+          </button>
         </div>
       </div>
     </div>
